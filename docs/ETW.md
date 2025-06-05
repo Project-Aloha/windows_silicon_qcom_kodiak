@@ -293,9 +293,8 @@ A94637FC-5099-4134-94E7-BAD9DD9FAF3C
 </details></td>
 </tr>
 <tr>
-<td>qcauddev</td>
+<td>qcaucd</td>
 <td>TraceDebug
-EntryExit
 Core</td>
 <td>
 

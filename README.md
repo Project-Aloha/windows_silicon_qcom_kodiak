@@ -44,5 +44,5 @@ Please see [LICENSE](LICENSE.md)
 For preserving charset encoding, please checkout with using:
 
 ```
-git clone -c core.autocrlf=false https://github.com/Project-Aloha/windows_silicon_qcom_kodiak
+git clone -c core.autocrlf=false https://github.com/Project-Aloha/windows_silicon_qcom_yupik
 ```

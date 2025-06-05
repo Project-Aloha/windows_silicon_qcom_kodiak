@@ -1,4 +1,4 @@
-## Snapdragon 778G
+## Snapdragon 778G/778G+/782G
 
 | Device Tree Source File Name           | PlatformTypeID | PlatformSubTypeID | PlatformSubType | Platform Version | ReservedBits | PanelDetection | DDRSize |
 |----------------------------------------|----------------|-------------------|-----------------|------------------|--------------|----------------|---------|
@@ -24,7 +24,7 @@
 
 ---
 
-## Snapdragon 778G
+## Snapdragon 778G/778G+/782G
 
 | Device Tree Source File Name           | Chip ID                        | Foundry ID | Reserved | PlatformID | RevID         |
 |----------------------------------------|--------------------------------|------------|----------|------------|---------------|

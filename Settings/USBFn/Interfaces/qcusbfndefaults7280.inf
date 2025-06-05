@@ -1,0 +1,92 @@
+﻿;
+; QCUSBFnDefaults7280.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 12/23/2024, 1.0.0.1
+CatalogFile = QCUSBFnDefaults7280.cat
+PnpLockdown = 1
+
+[Manufacturer]
+%IHV% = IHV, NTARM64.10.0...16299
+
+[IHV.NTARM64.10.0...16299]
+%QCUSBFnDefaults.DeviceDesc% = QCUSBFnDefaults_Device, ROOT\QCUSBFnDefaults
+
+[QCUSBFnDefaults_Device.NT]
+Addreg = ufnserialclass_Service_Inst.AddReg
+
+[ufnserialclass_Service_Inst.AddReg]
+; SerialCompositeConfig (PID_319B) 
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\SerialCompositeConfig", bmAttributes,  %REG_DWORD%,    0x80
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\SerialCompositeConfig", bMaxPower,     %REG_DWORD%,    0xFA
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\SerialCompositeConfig", InterfaceList, %REG_MULTI_SZ%, "DIAG", "MODEM", "NMEA", "TRACE"
+
+; RmNetCompositeConfig (PID_9001)
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\RmNetCompositeConfig", bmAttributes,  %REG_DWORD%,    0x80
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\RmNetCompositeConfig", bMaxPower,     %REG_DWORD%,    0xFA
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\RmNetCompositeConfig", InterfaceList, %REG_MULTI_SZ%, "DIAG", "NMEA", "MODEM", "RMNET"
+
+; DplCompositeConfig (PID_90B7)
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\DplCompositeConfig", bmAttributes,  %REG_DWORD%,    0x80
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\DplCompositeConfig", bMaxPower,     %REG_DWORD%,    0xFA
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\DplCompositeConfig", InterfaceList, %REG_MULTI_SZ%, "DIAG", "MODEM", "RMNET", "DPL"
+
+; CCIDCompositeConfig
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\CCIDCompositeConfig", bmAttributes,  %REG_DWORD%,    0x80
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\CCIDCompositeConfig", bMaxPower,     %REG_DWORD%,    0xFA
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\CCIDCompositeConfig", InterfaceList, %REG_MULTI_SZ%, "CCID", "DIAG"
+
+; Serial2CompositeConfig
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\Serial2CompositeConfig", bmAttributes,  %REG_DWORD%,    0x80
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\Serial2CompositeConfig", bMaxPower,     %REG_DWORD%,    0xFA
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\Serial2CompositeConfig", InterfaceList, %REG_MULTI_SZ%, "DIAG", "DIAG_MDM", "MODEM", "NMEA", "RMNET"
+
+; QdssCompositeConfig
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\QdssCompositeConfig", bmAttributes,  %REG_DWORD%,    0x80
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\QdssCompositeConfig", bMaxPower,     %REG_DWORD%,    0xFA
+HKLM, "System\CurrentControlSet\Control\USBFN\Configurations\QdssCompositeConfig", InterfaceList, %REG_MULTI_SZ%, "DIAG", "DIAG_MDM", "QDSS_MDM", "NMEA", "MODEM", "RMNET", "ADPL_MDM"
+
+; Interface DIAG
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\DIAG", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 00, 00, 02, FF, FF, 30, 00, 07, 05, 81, 02, 00, 02, 00, 07, 05, 02, 02, 00, 02, 00
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\DIAG", InterfaceGUID,       %REG_SZ%,     {3641691D-B4BD-4715-BB46-641FD214E147}
+; Interface MODEM 
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\MODEM", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 01, 00, 03, 02, FF, FF, 00, 07, 05, 83, 02, 00, 02, 00, 07, 05, 04, 02, 00, 02, 00, 07, 05, 85, 03, 40, 00, 0C
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\MODEM", InterfaceGUID,       %REG_SZ%,     {A01FDE7F-640E-4981-BB7C-58FC4860896B}
+; Interface NMEA
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\NMEA", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 02, 00, 02, FF, FF, FF, 00, 07, 05, 86, 02, 00, 02, 00, 07, 05, 07, 02, 00, 02, 00
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\NMEA", InterfaceGUID,       %REG_SZ%,     {A15D6AFA-C85D-426F-A79A-1DBBF17CFD2F}
+; Interface TRACE
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\TRACE", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 03, 00, 02, FF, FF, FF, 00, 07, 05, 88, 02, 00, 02, 00, 07, 05, 09, 02, 00, 02, 00
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\TRACE", InterfaceGUID,       %REG_SZ%,     {23238082-6DB8-4A76-8693-635F0093282A}
+; Interface RMNET
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\RMNET", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 03, 00, 03, FF, FF, FF, 00, 07, 05, 88, 02, 00, 02, 00, 07, 05, 09, 02, 00, 02, 00, 07, 05, 8A, 03, 40, 00, 0C
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\RMNET", InterfaceGUID,       %REG_SZ%,     {26884C7E-E24A-4FB6-8C75-00F8CD924A3D}
+; Interface DPL
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\DPL", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 02, 00, 01, FF, FF, FF, 00, 07, 05, 85, 02, 00, 02, 00
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\DPL", InterfaceGUID,       %REG_SZ%,     {873852F2-0D2A-4442-80A9-2DD869F41A5C}
+; Interface CCID
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\CCID", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 02, 00, 01, FF, FF, FF, 00, 07, 05, 85, 02, 00, 02, 00
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\CCID", InterfaceGUID,       %REG_SZ%,     {66DCEC92-60FB-46E8-9CF2-93E812442D48}
+; Interface DIAG_MDM
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\DIAG_MDM", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 00, 00, 02, FF, FF, 30, 00, 07, 05, 81, 02, 00, 02, 00, 07, 05, 02, 02, 00, 02, 00
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\DIAG_MDM", InterfaceGUID,       %REG_SZ%,     {FB61D50D-BC63-4502-9522-AC8384B21BFD}
+; Interface QDSS_MDM
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\QDSS_MDM", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 00, 00, 02, FF, FF, 30, 00, 07, 05, 81, 02, 00, 02, 00, 07, 05, 02, 02, 00, 02, 00
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\QDSS_MDM", InterfaceGUID,       %REG_SZ%,     {E3A71648-C619-4A0C-9160-01A0E3B3C641}
+; Interface ADPL_MDM
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\ADPL_MDM", InterfaceDescriptor, %REG_BINARY%, 09,                                     04, 00, 00, 02, FF, FF, 30, 00, 07, 05, 81, 02, 00, 02, 00, 07, 05, 02, 02, 00, 02, 00
+HKLM, "System\CurrentControlSet\Control\USBFN\Interfaces\ADPL_MDM", InterfaceGUID,       %REG_SZ%,     {EC30E5B6-30C1-4AD7-81AC-B0684A0194B1}
+
+[Strings]
+IHV                        = "DuoWoA authors"
+QCUSBFnDefaults.DeviceDesc = "Qualcomm(R) USB Composite Defaults Package"
+
+REG_SZ       = 0x00000000
+REG_BINARY   = 0x00000001
+REG_DWORD    = 0x00010001
+REG_MULTI_SZ = 0x00010000

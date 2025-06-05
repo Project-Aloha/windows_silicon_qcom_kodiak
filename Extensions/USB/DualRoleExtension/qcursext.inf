@@ -1,0 +1,29 @@
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = Extension
+ClassGuid   = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+Provider    = %QualComm%
+ExtensionId = {581a3261-af68-4fae-8f05-c26090b82cbd}
+DriverVer   = 02/12/2023, 1.0.3681.5800
+CatalogFile = qcursext.cat
+PnpLockdown = 1
+
+[Manufacturer]
+%QualComm% = DeviceExtensions, NTarm64.10.0...16299
+
+[DeviceExtensions.NTarm64.10.0...16299]
+%Device.ExtensionDesc% = DeviceExtension_Install, ACPI\QCOMFFE1
+
+[DeviceExtension_install]
+; Nothing to do here
+
+[DeviceExtension_Install.HW]
+AddReg = Settings_AddReg
+
+[Settings_AddReg]
+HKR,, RoleSwitchMode, 0x10001, 3
+
+[Strings]
+QualComm             = "Qualcomm Technologies Inc."
+MSFT                 = "Microsoft"
+Device.ExtensionDesc = "Qualcomm URS Extension"
