@@ -1,0 +1,77 @@
+﻿;/*++
+;
+;Copyright (C) 2012 by QUALCOMM, Incorporated.  All Rights Reserved.
+;
+;Module Name:
+;    qcImsDataDaemon_mbb_ext7280.INF
+;
+;Abstract:
+;    INF file for installing the Data Daemon Service as an MBB extension
+;
+;--*/
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = Extension
+ClassGuid   = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+Provider    = %QCOM%
+DriverVer   = 09/08/2020, 1.0.10730.0000
+ExtensionID = {834a2c62-3379-43e7-8202-4703d30a13cd}
+CatalogFile = qcimsdatadaemon_mbb_ext7280.cat
+PnpLockDown = 1
+
+[DestinationDirs]
+Service_Dir = 13
+
+[SourceDisksNames]
+1 = %DiskId1%,,, ""
+
+[SourceDisksFiles]
+qcimsdatadaemon.exe = 1,,
+qcdiaglogging.dll   = 1,,
+
+[Manufacturer]
+%QCOM% = Extension, NTARM64.10.0...16299
+
+[Extension.NTARM64.10.0...16299]
+; ImsDataDaemon service is installed as an extension of the MBB driver
+; Model should match that of MBB IDs
+%DataDaemon.SVCDESC% = DataDaemon_Device, IPAB\QCOM0AD7
+%DataDaemon.SVCDESC% = DataDaemon_Device, IPAB\QCOM0AD7
+
+[DataDaemon_Device.NT]
+CopyFiles = Service_Dir
+
+[Service_Dir]
+qcimsdatadaemon.exe
+qcdiaglogging.dll
+
+;-------------- Service installation
+[DataDaemon_Device.NT.Services]
+AddService = IMSDATASvc, %SPSVCSINST_STARTSERVICE%, DataDaemon_Service_Inst
+
+[DataDaemon_Service_Inst]
+DisplayName   = "IMSDATASvc"
+Description   = %DataDaemon.SVCDESC%
+ServiceType   = 0x10         ; SERVICE_WIN32_OWN_PROCESS
+StartType     = 2         ; SERVICE_AUTO_START
+ErrorControl  = 1         ; SERVICE_ERROR_NORMAL
+ServiceBinary = %13%\qcimsdatadaemon.exe
+StartName     = LocalSystem
+AddReg        = DataDaemon_Reg
+
+[DataDaemon_Reg]
+HKR,, FailureActions, %REG_BINARY%, 3C, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 03, 00, 00, 00, 14, 00, 00, 00, 01, 00, 00, 00, 10, 27, 00, 00, 01, 00, 00, 00, 10, 27, 00, 00, 01, 00, 00, 00, 10, 27, 00, 00
+
+[Strings]
+SPSVCSINST_STARTSERVICE = 0x00000800
+QCOM                    = "Qualcomm"
+DiskId1                 = "Qualcomm DataDaemon Service Disk"
+DataDaemon.SVCDESC      = "Qualcomm(R) DataDaemon Service"
+
+;Registry Type
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_DWORD     = 0x00010001
+REG_BINARY    = 0x00000001
