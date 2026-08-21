@@ -23,6 +23,10 @@ And with the following configurations:
 
 - Standard (Built in Snapdragon® X53 5G Modem)
 
+## Currently non functional chipset features
+- Camera Sensors
+- Hyper-V
+
 ## Relevant Documentation
 
 You can find a few notes under the docs folder inside this repository.
